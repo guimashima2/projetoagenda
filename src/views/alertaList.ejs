@@ -15,11 +15,17 @@
       <% if(alertas.length > 0) { %>
       <div class="responsive-table">
         <table class="table my-3">
+            <tr>
+                <th>Email</th>
+                <th>Mensagem</th>
+                <th>Data do Alerta</th>
+            </tr>
+        
           <% alertas.forEach(alerta => { %>
           <tr>
             <td><%= alerta.userID %></td>
             <td><%= alerta.mensagem %></td>
-            <td><%= alerta.date %></td>
+            <td><%= alerta.dataAlerta.toDateString() %></td>
           </tr>
           <% }); %>
         </table>

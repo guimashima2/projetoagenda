@@ -5,7 +5,7 @@ const validator = require('validator');
 const AlertaSchema = new mongoose.Schema({
   userID: { type: String, required: true },
   mensagem: { type: String, required: true, default: '' },
-  date: { type: Date, required: true, default: '' },
+  dataAlerta: { type: Date, required: true, default: '' },
   criadoEm: { type: Date, default: Date.now },
 });
 

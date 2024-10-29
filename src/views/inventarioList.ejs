@@ -20,6 +20,10 @@
       <% if(inventarios.length > 0) { %>
       <div class="responsive-table">
         <table class="table my-3">
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade</th>
+            </tr>
           <% inventarios.forEach(inventario => { %>
           <tr>
             <td><%= inventario.nome %></td>

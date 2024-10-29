@@ -8,6 +8,7 @@ exports.index = (req, res) => {
 
 exports.list = async (req, res) => {
     const alertas = await Alerta.buscaAlertas();
+    console.log(alertas)
     res.render('alertaList', { alertas });
   };
 

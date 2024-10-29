@@ -20,11 +20,16 @@
       <% if(produtos.length > 0) { %>
       <div class="responsive-table">
         <table class="table my-3">
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Data da Validade</th>
+            </tr>
           <% produtos.forEach(produto => { %>
           <tr>
             <td><%= produto.nome %></td>
             <td><%= produto.quantidade %></td>
-            <td><%= produto.dataValidade %></td>
+            <td><%= produto.dataValidade.toDateString() %></td>
             <td><a href="/produto/index/<%= produto._id %>">Editar</a></td>
             <td><a class="text-danger" href="/produto/delete/<%= produto._id %>">Excluir</a></td>
           </tr>
