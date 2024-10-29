@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 const sessionOptions = session({
-  secret: 'mongodb+srv://guimashima:z5FTtfTmJDMEfqM2@cursojsshima.j7gkm.mongodb.net/DBagenda?retryWrites=true&w=majority&appName=CursoJSshima',
+  secret: 'mongodb+srv://guimashima:z5FTtfTmJDMEfqM2@cursojsshima.j7gkm.mongodb.net/PIM?retryWrites=true&w=majority&appName=CursoJSshima',
   store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),
   resave: false,
   saveUninitialized: false,
