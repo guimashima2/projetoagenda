@@ -1,0 +1,38 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Alertas</h1>
+      <p class="text-center lead">Seus Alertas estão abaixo</p>
+
+      <%- include('includes/messages') %>
+
+      <% if(alertas.length > 0) { %>
+      <div class="responsive-table">
+        <table class="table my-3">
+          <% alertas.forEach(alerta => { %>
+          <tr>
+            <td><%= alerta.userID %></td>
+            <td><%= alerta.mensagem %></td>
+            <td><%= alerta.date %></td>
+          </tr>
+          <% }); %>
+        </table>
+      </div>
+      <% } else { %>
+        <p class="text-center lead">Não existem Alertas cadastrados.</p>
+      <% } %>
+
+    </div>
+
+    
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<%- include('includes/footer') %>

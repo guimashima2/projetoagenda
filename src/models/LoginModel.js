@@ -77,6 +77,18 @@ class Login {
       password: this.body.password
     };
   }
+
+  async buscaUsuarios() {
+    const usuarios = await LoginModel.find()
+      .sort({ criadoEm: -1 });
+    return usuarios;
+  };
+
+  async delete(id) {
+    if(typeof id !== 'string') return;
+    const usuario = await LoginModel.findOneAndDelete({_id: id});
+    return usuario;
+  };
 }
 
 module.exports = Login;

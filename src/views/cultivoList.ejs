@@ -1,0 +1,45 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Cultivos</h1>
+      <p class="text-center lead">Seus Cultivos estão abaixo</p>
+
+      <%- include('includes/messages') %>
+
+      <a class="navbar-brand" href="/cultivo/cadastrar">Cadastrar Cultivo</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <% if(cultivos.length > 0) { %>
+      <div class="responsive-table">
+        <table class="table my-3">
+          <% cultivos.forEach(cultivo => { %>
+          <tr>
+            <td><%= cultivo.temperatura %></td>
+            <td><%= cultivo.umidade %></td>
+            <td><%= cultivo.nivelNutrientes %></td>
+            <td><a href="/cultivo/index/<%= cultivo._id %>">Editar</a></td>
+            <td><a class="text-danger" href="/cultivo/delete/<%= cultivo._id %>">Excluir</a></td>
+          </tr>
+          <% }); %>
+        </table>
+      </div>
+      <% } else { %>
+        <p class="text-center lead">Não existem cultivos cadastrados.</p>
+      <% } %>
+
+    </div>
+
+    
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<%- include('includes/footer') %>

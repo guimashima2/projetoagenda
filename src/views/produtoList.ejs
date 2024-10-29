@@ -1,0 +1,45 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Produtos</h1>
+      <p class="text-center lead">Seus Produtos estão abaixo</p>
+
+      <%- include('includes/messages') %>
+
+      <a class="navbar-brand" href="/produto/cadastrar">Cadastrar Produto</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <% if(produtos.length > 0) { %>
+      <div class="responsive-table">
+        <table class="table my-3">
+          <% produtos.forEach(produto => { %>
+          <tr>
+            <td><%= produto.nome %></td>
+            <td><%= produto.quantidade %></td>
+            <td><%= produto.dataValidade %></td>
+            <td><a href="/produto/index/<%= produto._id %>">Editar</a></td>
+            <td><a class="text-danger" href="/produto/delete/<%= produto._id %>">Excluir</a></td>
+          </tr>
+          <% }); %>
+        </table>
+      </div>
+      <% } else { %>
+        <p class="text-center lead">Não existem Produtos cadastrados.</p>
+      <% } %>
+
+    </div>
+
+    
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<%- include('includes/footer') %>

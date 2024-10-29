@@ -1,0 +1,44 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Inventarios</h1>
+      <p class="text-center lead">Seu inventario esta abaixo</p>
+
+      <%- include('includes/messages') %>
+
+      <a class="navbar-brand" href="/inventario/cadastrar">Cadastrar Inventario</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <% if(inventarios.length > 0) { %>
+      <div class="responsive-table">
+        <table class="table my-3">
+          <% inventarios.forEach(inventario => { %>
+          <tr>
+            <td><%= inventario.nome %></td>
+            <td><%= inventario.quantidade %></td>
+            <td><a href="/inventario/index/<%= inventario._id %>">Editar</a></td>
+            <td><a class="text-danger" href="/inventario/delete/<%= inventario._id %>">Excluir</a></td>
+          </tr>
+          <% }); %>
+        </table>
+      </div>
+      <% } else { %>
+        <p class="text-center lead">Não existe nenhum item no inventario.</p>
+      <% } %>
+
+    </div>
+
+    
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<%- include('includes/footer') %>

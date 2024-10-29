@@ -1,0 +1,38 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Produto</h1>
+      <p class="text-center lead">Crie ou edite seu inventario abaixo.</p>
+
+      <%- include('includes/messages') %>
+
+      <% if(inventario._id) { %>
+      <form action="/inventario/edit/<%= inventario._id %>" method="POST">
+      <% } else { %>
+      <form action="/inventario/register" method="POST">
+      <% } %>
+        <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+        <div class="form-group">
+          <label>Nome</label>
+          <input value="<%= inventario.nome %>" type="text" class="form-control" name="nome">
+        </div>
+        <div class="form-group">
+          <label>Quantidade</label>
+          <input value="<%= inventario.quantidade %>" type="number" class="form-control" name="quantidade">
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </form>
+
+
+    </div>
+    
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<%- include('includes/footer') %>

@@ -5,6 +5,24 @@ exports.index = (req, res) => {
   return res.render('login');
 };
 
+exports.list = async (req, res) => {
+  const login = new Login()
+  const usuarios =  await login.buscaUsuarios()
+  res.render('usuarioList', { usuarios });
+};
+
+exports.delete = async function(req, res) {
+  const login = new Login()
+  if(!req.params.id) return res.render('404');
+
+  const usuario = await login.delete(req.params.id);
+  if(!usuario) return res.render('404');
+
+  req.flash('success', 'Usuario apagado com sucesso.');
+  req.session.save(() => res.redirect('back'));
+  return;
+};
+
 exports.register = async function(req, res) {
   try {
     const login = new Login(req.body);
